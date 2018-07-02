@@ -9,7 +9,6 @@ import java.util.function.Predicate;
 public class Main {
 
     static void SumEven(Integer[] arr, Predicate<Integer> integerPredicate){
-
         int sum=0;
         for(int number: arr){
             if (integerPredicate.test(number)){
@@ -17,12 +16,9 @@ public class Main {
             }
         }
         System.out.println(sum);
-
     }
 
     static void printJStr(List<String> list,Predicate<String> stringPredicate){
-
-
         for(String word: list){
                 char x=word.charAt(0);
                 String string=String.valueOf(x);
@@ -30,11 +26,7 @@ public class Main {
                 if(stringPredicate.test(string)){
                     System.out.println(word);
             }
-
-
-
         }
-
     }
 
     public static void main(String[] args) {
@@ -42,13 +34,8 @@ public class Main {
         for(int y=0;y<arr.length;y++){
             arr[y]=(((int)((Math.random())*1000)));
         }
-
         Arrays.sort(arr,(o1, o2) -> o1-o2);
-        SumEven(arr,n->n>900);
-
-
-
-
+        SumEven(arr,n->n%2==0);
         List<String> list=new ArrayList<String>();
         list.add("zeta");
         list.add("way");
@@ -58,19 +45,8 @@ public class Main {
         list.add("business");
         list.add("aka");
         list.add("ace");
-
-
         Collections.sort(list,(s1,s2)->s1.toString().compareTo(s2.toString()));
-        printJStr(list,p->p.equals("a"));
-
-
-
-
-
-
-
-
-
+        printJStr(list,p->p.equals("b"));
 
     }
 

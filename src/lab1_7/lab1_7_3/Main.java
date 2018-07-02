@@ -8,47 +8,49 @@ import java.util.function.Predicate;
 
 public class Main {
 
-    static void SumEven(Integer[] arr, Predicate<Integer> integerPredicate){
-
-        int sum=0;
-        for(int number: arr){
-            if (integerPredicate.test(number)){
-                sum+=number;
+    static void SumEven(Integer[] arr, Predicate<Integer> integerPredicate) {
+        int sum = 0;
+        for (int number : arr) {
+            if (integerPredicate.test(number)) {
+                sum += number;
             }
         }
         System.out.println(sum);
-
     }
 
-    static void printJStr(List<String> list,Predicate<String> stringPredicate){
-
-
-        for(String word: list){
-                char x=word.charAt(0);
-                String string=String.valueOf(x);
-
-                if(stringPredicate.test(string)){
-                    System.out.println(word);
+    static void printJStr(List<String> list, Predicate<String> stringPredicate) {
+        for (String word : list) {
+            char x = word.charAt(0);
+            String string = String.valueOf(x);
+            if (stringPredicate.test(string)) {
+                System.out.println(word);
             }
+        }
+    }
 
+    static void updateList(List<String> list) {
+        MyConverter myConverter;
+        myConverter=s->{
+            if(!MyConverter.isNull(s)){
+                s=s.toUpperCase();
+            }
+            return s;
+        };
 
-
+        for(int y=0;y<list.size();y++){
+            list.set(y,myConverter.convertStr(list.get(y)));
         }
 
     }
+
 
     public static void main(String[] args) {
         Integer [] arr=new Integer[100];
         for(int y=0;y<arr.length;y++){
             arr[y]=(((int)((Math.random())*1000)));
         }
-
         Arrays.sort(arr,(o1, o2) -> o1-o2);
         SumEven(arr,n->n>900);
-
-
-
-
         List<String> list=new ArrayList<String>();
         list.add("zeta");
         list.add("way");
@@ -61,7 +63,11 @@ public class Main {
 
 
         Collections.sort(list,(s1,s2)->s1.toString().compareTo(s2.toString()));
-        printJStr(list,p->p.equals("a"));
+        updateList(list);
+        list.forEach(System.out::println);
+
+        //printJStr(list,p->p.equals("a"));
+
 
 
 
